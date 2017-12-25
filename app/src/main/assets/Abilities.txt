@@ -1,0 +1,7 @@
+Stunning Strike||Action||Spend 1 Ki Point. Target must succeed on a saving throw or be stuned until the end of your next turn||5||N/A
+Flurry Of Blows||Bonus Action||Immediately after you take the Attack Action on your turn ou can spend 1 ki point to make two unarmed strkes as a Bonus Action||12||Attack
+Patient Defense||Bonus Action||You Can spend 1 ki point to take the Dodge action as a bonus action on your turn||0||N/A
+Step Of the Wind||Bonus Action||You can spend 1 ki point to take the Disengage or Dash action as a bonus action on your turn, and your jump distance is doubled for the turn||0||N/A
+Deflect Missles||Reaction||It deflects missles||0||N/A
+Parry||Reaction||When another creature makes a melee attack against you reduce the damge by the number you roll on your superiority die + your Dex modifier||0||N/A
+Evasive Footwork||When you hit a creature with a weapon attack, you can expend one superiority die to distract the creature||9||Attack 
