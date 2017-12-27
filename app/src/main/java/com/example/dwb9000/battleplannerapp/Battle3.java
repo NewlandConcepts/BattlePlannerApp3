@@ -1,5 +1,6 @@
 package com.example.dwb9000.battleplannerapp;
 
+import android.database.Cursor;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,7 +18,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class Battle3 extends AppCompatActivity {
 
@@ -35,6 +40,9 @@ public class Battle3 extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    //private DatabaseHelper myDB;
+    //private static ArrayList<String> listOfAbilities = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +105,8 @@ public class Battle3 extends AppCompatActivity {
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
+        private DatabaseHelper myDB;
+        private ArrayList<String> listOfAbilities = new ArrayList<String>();
 
         public PlaceholderFragment() {
         }
@@ -117,9 +127,55 @@ public class Battle3 extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_battle3, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            myDB = new DatabaseHelper(getContext());
+            int SectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
+            populateListView(rootView, SectionNumber);
+            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
+        }
+
+        public void populateListView(View rootView, int secNumber)
+        {
+            populateArrayList(secNumber);
+            ArrayAdapter<String> adapter;
+            adapter = new ArrayAdapter<String>(
+                    getContext(),
+                    android.R.layout.simple_list_item_1, //The layout needs to be ListViewItems xml file.
+                    //If you use your xml file as the layout, it will automatically convert
+                    //your task to a textview
+                    listOfAbilities);
+
+            ListView list = (ListView)rootView.findViewById(R.id.ActionList);
+            list.setAdapter(adapter);
+        }
+
+        private void populateArrayList(int secNumber) {
+            listOfAbilities.clear();
+            Cursor res;
+
+            if(secNumber == 1) {
+                res = myDB.getDataByAbilityType("Action");
+            }
+            else if(secNumber == 2)
+            {
+                res = myDB.getDataByAbilityType("Bonus Action");
+            }
+            else if(secNumber == 3){
+                res = myDB.getDataByAbilityType("Reaction");
+            }
+            else
+            {
+                res = myDB.getDataByAbilityType("");
+            }
+
+            if (res.getCount() == 0) {
+                listOfAbilities.add("No Abilities Available");
+            }
+
+            while (res.moveToNext()) {
+                listOfAbilities.add(res.getString(0));
+            }
         }
     }
 

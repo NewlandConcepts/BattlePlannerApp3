@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void Temp(View view)
     {
-        Intent intent = new Intent(this,Battle.class);
+        Intent intent = new Intent(this,Battle3.class);
         startActivity(intent);
     }
 }

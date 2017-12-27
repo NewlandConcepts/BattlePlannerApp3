@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 public class Battle extends AppCompatActivity {
 
+    /*
     static final int NUM_ITEMS = 10;
 
     MyAdapter mAdapter;
@@ -118,6 +119,7 @@ public class Battle extends AppCompatActivity {
          * as an argument.
          */
 
+    /*
         static ArrayListFragment newInstance(int num) {
             ArrayListFragment f = new ArrayListFragment();
 
@@ -133,6 +135,7 @@ public class Battle extends AppCompatActivity {
          * When creating, retrieve this instance's number from its arguments.
          */
 
+        /*
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View v = inflater.inflate(R.layout.fragment_pager_list, container, false);
@@ -244,5 +247,5 @@ public class Battle extends AppCompatActivity {
         tabHost.addTab(tab1);
         //tabHost.addTab(tab2);
         //tabHost.addTab(tab3);
-    } */
+    } */ }
 
